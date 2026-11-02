@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>GUSTAVO — Desenvolvedor de Sistemas | Portfólio 3D Interativo</title>
+  
+  <meta name="description" content="Portfólio 3D interativo de Gustavo (@30781-max), Desenvolvedor de Sistemas. Experiência mobile imersiva apresentando projetos reais como Chavegatto e Antigravit.">
+  <meta name="keywords" content="Desenvolvedor de Sistemas, Gustavo, 30781-max, Portfólio 3D, Three.js, Chavegatto, Antigravit, Web Developer, JavaScript, Python">
+  <meta name="author" content="Gustavo">
+  <meta name="theme-color" content="#171717">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GUSTAVO — Desenvolvedor de Sistemas | Portfólio 3D Interativo">
+  <meta property="og:description" content="Experiência 3D interativa guiada por um smartphone realista. Conheça projetos reais, habilidades e repositórios.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/screenshots/chavegatto-desktop.png">
+
+  <!-- Google Fonts: Space Grotesk & Roboto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS Principal -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%23171717'/><text x='50%' y='65%' font-size='55' font-weight='bold' font-family='Space Grotesk, sans-serif' fill='%2300FF99' text-anchor='middle'>G</text></svg>">
+</head>
+<body class="loading-state">
+
+  <!-- TELA DE CARREGAMENTO / PRELOADER ELEGANTE -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <div class="preloader-brand">
+        <span class="preloader-symbol">⚡</span>
+        <span class="preloader-title">GUSTAVO</span>
+      </div>
+      <div class="preloader-bar">
+        <div id="preloaderProgress" class="preloader-progress"></div>
+      </div>
+      <div class="preloader-status">
+        <span id="preloaderText">INICIALIZANDO EXPERIÊNCIA 3D...</span>
+        <span id="preloaderPercent">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CABEÇALHO FIXO / TOP NAVIGATION -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" aria-label="Início do portfólio">
+        <span class="logo-mark">G</span>
+        <span class="logo-text">GUSTAVO<span class="dot-accent">.</span></span>
+      </a>
+
+      <div class="header-center">
+        <div class="status-badge" title="Status profissional">
+          <span class="status-pulse"></span>
+          <span class="status-label">DISPONÍVEL PARA PROJETOS</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Indicador de Modo / Diagnóstico Fallback -->
+        <button id="fallbackToggleBtn" class="action-pill" aria-label="Painel de Fallback e Diagnóstico">
+          <span class="pill-dot" id="engineStatusDot"></span>
+          <span id="engineStatusText">3D ENGINE</span>
+        </button>
+
+        <!-- Toggle de Som / Efeitos Sutis -->
+        <button id="audioToggleBtn" class="action-icon-btn" aria-label="Ativar/Desativar som de interação" title="Efeitos sonoros táteis">
+          <svg class="icon-sound-on" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg class="icon-sound-off is-hidden" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+        </button>
+
+        <!-- Link Direto GitHub -->
+        <a href="https://github.com/30781-max" target="_blank" rel="noopener noreferrer" class="action-icon-btn github-header-btn" aria-label="Perfil no GitHub @30781-max" title="GitHub @30781-max">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVEGAÇÃO LATERAL DE ETAPAS (TIMELINE INDICATOR) -->
+  <aside class="timeline-indicator" aria-label="Navegação das etapas">
+    <ul class="timeline-steps">
+      <li class="timeline-item is-active" data-index="0" title="01 — Apresentação">
+        <span class="timeline-number">01</span>
+        <span class="timeline-text">Apresentação</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="1" title="02 — Sobre Mim">
+        <span class="timeline-number">02</span>
+        <span class="timeline-text">Sobre Mim</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="2" title="03 — Habilidades">
+        <span class="timeline-number">03</span>
+        <span class="timeline-text">Habilidades</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="3" title="04 — Chavegatto">
+        <span class="timeline-number">04</span>
+        <span class="timeline-text">Chavegatto</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="4" title="05 — Antigravit">
+        <span class="timeline-number">05</span>
+        <span class="timeline-text">Antigravit</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="5" title="06 — GitHub Repos">
+        <span class="timeline-number">06</span>
+        <span class="timeline-text">GitHub</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="6" title="07 — Conhecimento">
+        <span class="timeline-number">07</span>
+        <span class="timeline-text">Experiência</span>
+        <span class="timeline-pip"></span>
+      </li>
+      <li class="timeline-item" data-index="7" title="08 — Contato">
+        <span class="timeline-number">08</span>
+        <span class="timeline-text">Contato</span>
+        <span class="timeline-pip"></span>
+      </li>
+    </ul>
+    <div class="timeline-progress-track">
+      <div id="timelineProgressFill" class="timeline-progress-fill"></div>
+    </div>
+  </aside>
+
+  <!-- BACKGROUND EDITORIAL & AMBIENT VISUALS (FIXO NO VIEWPORT) -->
+  <div class="editorial-background" aria-hidden="true">
+    <div class="ambient-glow ambient-glow-1"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+    <div class="ambient-grid"></div>
+
+    <!-- FRASE EDITORIAL PRINCIPAL (SOLICITADA NO PROMPT) -->
+    <div class="editorial-quote-container" id="editorialQuote">
+      <p class="editorial-quote">DESIGNING AND BUILDING DIGITAL EXPERIENCES.</p>
+    </div>
+
+    <!-- TEXTOS EDITORIAIS DE TRANSIÇÃO LATERAL -->
+    <div class="editorial-stage-label" id="stageLabel">
+      <span class="stage-tag">ETAPA 01 // OVERVIEW</span>
+      <h2 class="stage-headline">SISTEMAS MODERNOS & ENGENHARIA DIGITAL</h2>
+    </div>
+  </div>
+
+  <!-- CONTAINER DO SMARTPHONE 3D (THREE.JS WEBGL + CSS3D RENDERERS) -->
+  <div id="viewport3d" class="viewport-3d" aria-label="Modelo 3D interativo do smartphone">
+    <!-- Três canvas/renderers são injetados aqui via script.js:
+         1. WebGLRenderer (corpo metálico titânio, câmera, lentes de vidro, iluminação e sombras)
+         2. CSS3DRenderer (conteúdo real em HTML renderizado diretamente na tela do celular)
+    -->
+  </div>
+
+  <!-- SMARTPHONE FALLBACK (CSS 3D / 2D ULTRA-REALISTA CASO O 3D FALHE OU SEJA DESATIVADO) -->
+  <div id="smartphoneFallback" class="smartphone-fallback is-hidden" aria-hidden="true">
+    <div class="phone-case-fallback">
+      <!-- Botões Laterais Realistas -->
+      <div class="side-btn volume-up"></div>
+      <div class="side-btn volume-down"></div>
+      <div class="side-btn action-btn"></div>
+      <div class="side-btn power-btn"></div>
+      <!-- Aro de Titânio -->
+      <div class="phone-frame-inner">
+        <!-- Reflexo de Vidro -->
+        <div class="phone-glare-sheen"></div>
+        <!-- Tela Container no Fallback (será preenchido pelo mesmo DOM) -->
+        <div class="phone-screen-target-fallback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESTRUTURA DO CONTEÚDO DA TELA DO SMARTPHONE (DOM REAL NATIVO) -->
+  <!-- Este container é projetado na tela 3D pelo CSS3D e reusado no Fallback CSS! -->
+  <div id="phoneScreenTemplate" class="phone-screen-root">
+    <div class="phone-screen-glass">
+      
+      <!-- BARRA DE STATUS DO SISTEMA MOBILE -->
+      <div class="phone-status-bar">
+        <span class="phone-clock" id="phoneLiveClock">12:00</span>
+        <!-- DYNAMIC ISLAND REALISTA -->
+        <div class="dynamic-island" id="dynamicIsland">
+          <div class="island-camera"></div>
+          <div class="island-indicator"></div>
+          <div class="island-content">
+            <span class="island-text">GUSTAVO OS</span>
+            <span class="island-icon">⚡</span>
+          </div>
+        </div>
+        <div class="phone-status-icons">
+          <!-- Ícone 5G / Wi-Fi -->
+          <svg class="phone-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9.43 2.01-12 5.25L12 21 24 8.25C21.43 5.01 16.97 3 12 3z"/></svg>
+          <!-- Ícone Bateria -->
+          <div class="phone-battery">
+            <div class="battery-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÁREA DE CONTEÚDO NAVEGÁVEL DO CELULAR -->
+      <div class="phone-views-wrapper" id="phoneViewsWrapper">
+
+        <!-- ==============================================
+             ETAPA 1: APRESENTAÇÃO / HERO SCREEN
+             ============================================== -->
+        <section class="phone-view active-view" data-view="0" id="view-hero">
+          <div class="view-inner hero-view-content">
+            <div class="hero-badge-tag">
+              <span class="pulse-indicator"></span>
+              PORTFÓLIO 2026
+            </div>
+
+            <div class="hero-identity">
+              <span class="hero-greeting">Olá, meu nome é</span>
+              <h1 class="hero-name">GUSTAVO<span class="accent-color">.</span></h1>
+              <div class="hero-role-pill">
+                <span class="role-text">Desenvolvedor de Sistemas</span>
+              </div>
+            </div>
+
+            <p class="hero-bio">
+              Construindo produtos digitais robustos, arquiteturas eficientes e experiências interativas de alto desempenho.
+            </p>
+
+            <div class="hero-scroll-cta">
+              <div class="scroll-mouse-icon">
+                <div class="scroll-wheel-anim"></div>
+              </div>
+              <span class="scroll-cta-text">ROLE PARA EXPLORAR</span>
+              <span class="scroll-cta-sub">OU USE A NAVEGAÇÃO LATERAL</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 2: SOBRE MIM
+             ============================================== -->
+        <section class="phone-view" data-view="1" id="view-about">
+          <div class="view-inner about-view-content">
+            <div class="section-micro-header">
+              <span class="step-badge">ETAPA 02</span>
+              <span class="category-name">PERFIL</span>
+            </div>
+
+            <h2 class="view-title">Sobre Mim</h2>
+
+            <div class="about-card">
+              <div class="about-avatar-row">
+                <img src="assets/images/avatar.png" alt="Gustavo" class="about-avatar-img" onerror="this.style.display='none'">
+                <div class="about-avatar-meta">
+                  <span class="meta-name">Gustavo</span>
+                  <span class="meta-handle">@30781-max</span>
+                  <span class="meta-role">Desenvolvedor de Software</span>
+                </div>
+              </div>
+
+              <p class="about-paragraph">
+                Desenvolvedor com foco em <strong>Engenharia de Sistemas</strong>, soluções web modernas e automações. Apaixonado por transformar ideias complexas em interfaces rápidas, intuitivas e bem estruturadas.
+              </p>
+            </div>
+
+            <div class="about-highlights-grid">
+              <div class="highlight-item">
+                <span class="highlight-val">FULL-STACK</span>
+                <span class="highlight-lbl">Atuação Principal</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-val">CLEAN CODE</span>
+                <span class="highlight-lbl">Metodologia</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-val">HIGH-PERF</span>
+                <span class="highlight-lbl">Compromisso</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-val">REAL TECH</span>
+                <span class="highlight-lbl">Aplicações Práticas</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 3: HABILIDADES (SKILLS)
+             ============================================== -->
+        <section class="phone-view" data-view="2" id="view-skills">
+          <div class="view-inner skills-view-content">
+            <div class="section-micro-header">
+              <span class="step-badge">ETAPA 03</span>
+              <span class="category-name">STACK TÉCNICA</span>
+            </div>
+
+            <h2 class="view-title">Habilidades</h2>
+            <p class="view-subtitle">Tecnologias dominadas e aplicadas em produção:</p>
+
+            <div class="skills-grid">
+              
+              <!-- HTML5 -->
+              <div class="skill-tile" data-tech="HTML5">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/html5.svg" alt="HTML5" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">HTML5</span>
+                  <span class="skill-level">Semântico & Acessível</span>
+                </div>
+              </div>
+
+              <!-- CSS3 -->
+              <div class="skill-tile" data-tech="CSS3">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/css3.svg" alt="CSS3" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">CSS3</span>
+                  <span class="skill-level">Responsivo, 3D & Animações</span>
+                </div>
+              </div>
+
+              <!-- JavaScript -->
+              <div class="skill-tile" data-tech="JavaScript">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/javascript.svg" alt="JavaScript" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">JavaScript</span>
+                  <span class="skill-level">ES6+, DOM, Assíncrono</span>
+                </div>
+              </div>
+
+              <!-- Python -->
+              <div class="skill-tile" data-tech="Python">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/python.svg" alt="Python" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">Python</span>
+                  <span class="skill-level">Lógica, Automação & Backend</span>
+                </div>
+              </div>
+
+              <!-- Git & GitHub -->
+              <div class="skill-tile" data-tech="Git & GitHub">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/git.svg" alt="Git" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">Git e GitHub</span>
+                  <span class="skill-level">Controle de Versão & Fluxos</span>
+                </div>
+              </div>
+
+              <!-- Banco de Dados -->
+              <div class="skill-tile" data-tech="Banco de Dados">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/database.svg" alt="Banco de dados" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">Banco de Dados</span>
+                  <span class="skill-level">Modelagem & Persistência</span>
+                </div>
+              </div>
+
+              <!-- Desenvolvimento Web -->
+              <div class="skill-tile skill-tile-featured" data-tech="Desenvolvimento Web">
+                <div class="skill-icon-wrap">
+                  <img src="assets/icons/web.svg" alt="Desenvolvimento Web" class="skill-svg-icon">
+                </div>
+                <div class="skill-info">
+                  <span class="skill-name">Desenvolvimento Web</span>
+                  <span class="skill-level">Aplicações Completas & SPAs</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 4A: PROJETO REAL 01 — CHAVEGATTO
+             ============================================== -->
+        <section class="phone-view" data-view="3" id="view-project-chavegatto">
+          <div class="view-inner project-view-content project-chavegatto-theme">
+            <div class="section-micro-header">
+              <span class="step-badge project-badge-cyan">PROJETO REAL 01</span>
+              <span class="project-domain">chavegatto.vercel.app</span>
+            </div>
+
+            <div class="project-title-row">
+              <h2 class="project-title">Chavegatto</h2>
+              <span class="project-badge-tag">Tech Force</span>
+            </div>
+
+            <!-- MOCKUP / CAPTURA REAL DO SITE -->
+            <div class="project-mockup-frame">
+              <div class="mockup-browser-bar">
+                <span class="browser-dot dot-red"></span>
+                <span class="browser-dot dot-yellow"></span>
+                <span class="browser-dot dot-green"></span>
+                <span class="browser-url-text">https://chavegatto.vercel.app/</span>
+              </div>
+              <div class="mockup-img-container">
+                <img 
+                  src="assets/screenshots/chavegatto-mobile.png" 
+                  alt="Interface original do projeto Chavegatto - Tech Force" 
+                  class="project-real-img"
+                  loading="lazy"
+                  onerror="this.classList.add('is-fallback');"
+                >
+                <div class="mockup-img-fallback-info">
+                  <span class="fallback-brand">TECH FORCE</span>
+                  <span class="fallback-tagline">Tecnologia que fortalece sua academia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DESCRIÇÃO BASEADA NO FUNCIONAMENTO REAL -->
+            <p class="project-real-description">
+              Plataforma inovadora para academias que transforma o dia a dia operacional através de soluções tecnológicas inteligentes, inteligência artificial e interfaces intuitivas de alta conversão.
+            </p>
+
+            <!-- TECNOLOGIAS CONFIRMADAS -->
+            <div class="project-tech-tags">
+              <span class="tech-pill">HTML5</span>
+              <span class="tech-pill">Tailwind CSS</span>
+              <span class="tech-pill">JavaScript</span>
+              <span class="tech-pill">Vercel</span>
+            </div>
+
+            <!-- BOTÃO COM LINK FUNCIONAL -->
+            <a 
+              href="https://chavegatto.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="project-action-btn project-btn-cyan"
+            >
+              <span>VISUALIZAR PROJETO</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 4B: PROJETO REAL 02 — ANTIGRAVIT
+             ============================================== -->
+        <section class="phone-view" data-view="4" id="view-project-antigravit">
+          <div class="view-inner project-view-content project-antigravit-theme">
+            <div class="section-micro-header">
+              <span class="step-badge project-badge-magenta">PROJETO REAL 02</span>
+              <span class="project-domain">antigravit-eight.vercel.app</span>
+            </div>
+
+            <div class="project-title-row">
+              <h2 class="project-title">Antigravit</h2>
+              <span class="project-badge-tag tag-cyber">CYBER PULSE</span>
+            </div>
+
+            <!-- MOCKUP / CAPTURA REAL DO SITE -->
+            <div class="project-mockup-frame">
+              <div class="mockup-browser-bar">
+                <span class="browser-dot dot-red"></span>
+                <span class="browser-dot dot-yellow"></span>
+                <span class="browser-dot dot-green"></span>
+                <span class="browser-url-text">https://antigravit-eight.vercel.app/</span>
+              </div>
+              <div class="mockup-img-container">
+                <img 
+                  src="assets/screenshots/antigravit-mobile.png" 
+                  alt="Interface original do jogo CYBER PULSE Neon Rhythm" 
+                  class="project-real-img"
+                  loading="lazy"
+                  onerror="this.classList.add('is-fallback');"
+                >
+                <div class="mockup-img-fallback-info">
+                  <span class="fallback-brand">CYBER PULSE</span>
+                  <span class="fallback-tagline">Hardcore 2D Neon Rhythm Game</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- DESCRIÇÃO BASEADA NO FUNCIONAMENTO REAL -->
+            <p class="project-real-description">
+              Jogo rítmico 2D hardcore cyberpunk ("Neon Dawn") renderizado via HTML5 Canvas em tempo real. Possui física de pulso dinâmico, HUD interativo, barra de progresso e síntese de áudio.
+            </p>
+
+            <!-- TECNOLOGIAS CONFIRMADAS -->
+            <div class="project-tech-tags">
+              <span class="tech-pill">HTML5 Canvas</span>
+              <span class="tech-pill">JavaScript ES6+</span>
+              <span class="tech-pill">Web Audio</span>
+              <span class="tech-pill">CSS3 Neon</span>
+            </div>
+
+            <!-- BOTÃO COM LINK FUNCIONAL -->
+            <a 
+              href="https://antigravit-eight.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="project-action-btn project-btn-magenta"
+            >
+              <span>VISUALIZAR PROJETO</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 4C: GITHUB OFICIAL — REPOSITÓRIOS REAIS
+             ============================================== -->
+        <section class="phone-view" data-view="5" id="view-github-repos">
+          <div class="view-inner github-view-content">
+            <div class="section-micro-header">
+              <span class="step-badge">ETAPA ESPECIAL</span>
+              <span class="category-name">CÓDIGO ABERTO</span>
+            </div>
+
+            <div class="github-title-group">
+              <span class="github-special-quote">MORE THAN JUST IDEAS. REAL PROJECTS.</span>
+              <h2 class="view-title">Repositórios GitHub</h2>
+            </div>
+
+            <!-- PERFIL RESUMIDO COM AVATAR REAL E LINK -->
+            <a href="https://github.com/30781-max" target="_blank" rel="noopener noreferrer" class="github-user-card" title="Acessar perfil no GitHub">
+              <div class="user-avatar-wrap">
+                <img src="assets/images/avatar.png" alt="@30781-max" class="github-avatar-img">
+                <div class="github-icon-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+              </div>
+              <div class="user-details">
+                <span class="user-handle">@30781-max</span>
+                <span class="user-repos-count" id="reposCountBadge">Carregando repositórios...</span>
+              </div>
+              <div class="user-arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </a>
+
+            <!-- LISTA DINÂMICA DE REPOSITÓRIOS (POPULADA VIA API COM FALLBACK) -->
+            <div class="repos-scroll-list" id="reposListContainer">
+              <div class="repos-loading-placeholder">
+                <span class="spinner-dot"></span>
+                <span>Sincronizando com API do GitHub...</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 5: EXPERIÊNCIA E CONHECIMENTOS
+             ============================================== -->
+        <section class="phone-view" data-view="6" id="view-experience">
+          <div class="view-inner experience-view-content">
+            <div class="section-micro-header">
+              <span class="step-badge">ETAPA 05</span>
+              <span class="category-name">BAGAGEM & EXPERTISE</span>
+            </div>
+
+            <h2 class="view-title">Experiência & Estudos</h2>
+
+            <div class="timeline-app-list">
+              
+              <!-- Item 1: Arquitetura & Desenvolvimento -->
+              <div class="timeline-app-item">
+                <div class="timeline-app-bullet"></div>
+                <div class="timeline-app-body">
+                  <span class="item-tag">ENGENHARIA DE SISTEMAS</span>
+                  <h3 class="item-title">Desenvolvimento de Aplicações & Web</h3>
+                  <p class="item-desc">
+                    Construção de aplicações completas com foco em modularidade, código limpo, controle de estado e integração eficiente com APIs e bancos de dados.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 2: UI/UX & Interatividade 3D -->
+              <div class="timeline-app-item">
+                <div class="timeline-app-bullet"></div>
+                <div class="timeline-app-body">
+                  <span class="item-tag">INTERFACES AVANÇADAS</span>
+                  <h3 class="item-title">Experiências Imersivas & Canvas</h3>
+                  <p class="item-desc">
+                    Experiência prática na criação de interfaces ricas, animações fluidas via CSS/GSAP, renderização 2D Canvas e integração de gráficos 3D interativos.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 3: Ferramentas & Boas Práticas -->
+              <div class="timeline-app-item">
+                <div class="timeline-app-bullet"></div>
+                <div class="timeline-app-body">
+                  <span class="item-tag">WORKFLOW & QUALIDADE</span>
+                  <h3 class="item-title">Git Flow, Versionamento & Deploy</h3>
+                  <p class="item-desc">
+                    Rotina estruturada de commits semânticos, gestão ágil de repositórios no GitHub e publicação contínua em plataformas como Vercel.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==============================================
+             ETAPA 6: CONTATO
+             ============================================== -->
+        <section class="phone-view" data-view="7" id="view-contact">
+          <div class="view-inner contact-view-content">
+            <div class="section-micro-header">
+              <span class="step-badge">ETAPA FINAL</span>
+              <span class="category-name">CONEXÃO</span>
+            </div>
+
+            <h2 class="view-title">Vamos Conversar?</h2>
+            <p class="view-subtitle">Entre em contato para novas oportunidades, projetos ou colaborações:</p>
+
+            <div class="contact-links-list">
+              
+              <!-- GitHub Oficial (Destaque Principal Solicitado) -->
+              <a href="https://github.com/30781-max" target="_blank" rel="noopener noreferrer" class="contact-card primary-contact-card">
+                <div class="contact-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </div>
+                <div class="contact-card-text">
+                  <span class="card-channel">GITHUB</span>
+                  <span class="card-value">github.com/30781-max</span>
+                </div>
+                <span class="card-badge">PRINCIPAL</span>
+              </a>
+
+              <!-- E-mail Direto com Cópia Rápida -->
+              <div class="contact-card email-contact-card" id="emailCopyCard">
+                <div class="contact-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div class="contact-card-text">
+                  <span class="card-channel">E-MAIL PROFISSIONAL</span>
+                  <span class="card-value" id="emailTextDisplay">gustavo.dev.systems@gmail.com</span>
+                </div>
+                <button class="copy-action-btn" id="emailCopyBtn" title="Copiar endereço de e-mail">
+                  <span class="btn-text">COPIAR</span>
+                </button>
+              </div>
+
+              <!-- Projetos Rápidos -->
+              <div class="quick-projects-footer">
+                <span class="quick-title">ACESSO RÁPIDO AOS PROJETOS:</span>
+                <div class="quick-links-row">
+                  <a href="https://chavegatto.vercel.app/" target="_blank" rel="noopener noreferrer" class="quick-link-pill">
+                    Chavegatto ↗
+                  </a>
+                  <a href="https://antigravit-eight.vercel.app/" target="_blank" rel="noopener noreferrer" class="quick-link-pill">
+                    Antigravit ↗
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Rodapé interno do celular -->
+            <div class="phone-footer-signature">
+              <span>© 2026 GUSTAVO · DESENVOLVIMENTO DE SISTEMAS</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- HOME BAR INDICATOR DA TELA MOBILE -->
+      <div class="phone-home-indicator">
+        <div class="home-indicator-bar"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTAINER DE SCROLL VIRTUALE / TRACKER DE ROLAGEM -->
+  <!-- Cada .scroll-checkpoint representa uma etapa física mapeada ao GSAP ScrollTrigger -->
+  <main class="scroll-track-container" id="scrollTrackContainer">
+    <section class="scroll-checkpoint" data-step="0" id="step-0" aria-label="Apresentação"></section>
+    <section class="scroll-checkpoint" data-step="1" id="step-1" aria-label="Sobre Mim"></section>
+    <section class="scroll-checkpoint" data-step="2" id="step-2" aria-label="Habilidades"></section>
+    <section class="scroll-checkpoint" data-step="3" id="step-3" aria-label="Chavegatto"></section>
+    <section class="scroll-checkpoint" data-step="4" id="step-4" aria-label="Antigravit"></section>
+    <section class="scroll-checkpoint" data-step="5" id="step-5" aria-label="Repositórios GitHub"></section>
+    <section class="scroll-checkpoint" data-step="6" id="step-6" aria-label="Experiência e Conhecimentos"></section>
+    <section class="scroll-checkpoint" data-step="7" id="step-7" aria-label="Contato"></section>
+  </main>
+
+  <!-- MODAL / PAINEL DE TESTE DE FALLBACK (CONFORME SEÇÃO 9.7) -->
+  <div id="fallbackModal" class="fallback-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge">PLANO DE CONTINGÊNCIA</span>
+          <h3 id="modalTitle" class="modal-heading">Central de Testes de Fallback</h3>
+        </div>
+        <button id="closeModalBtn" class="modal-close-btn" aria-label="Fechar painel">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="modal-intro">
+          Valide a estabilidade do portfólio simulando as falhas descritas na Seção 9 dos requisitos.
+        </p>
+
+        <div class="fallback-toggles-grid">
+          
+          <!-- Teste 1: Three.js / WebGL Fallback -->
+          <div class="fallback-test-item">
+            <div class="test-item-meta">
+              <span class="test-item-title">9.1 — 3D Smartphone Fallback</span>
+              <span class="test-item-desc">Desativa Three.js e WebGL, ativando smartphone CSS 3D/2D realista.</span>
+            </div>
+            <button id="testToggle3dFallback" class="test-switch-btn" data-active="false">
+              <span>TESTAR 2D</span>
+            </button>
+          </div>
+
+          <!-- Teste 2: GSAP / Animações Fallback -->
+          <div class="fallback-test-item">
+            <div class="test-item-meta">
+              <span class="test-item-title">9.2 — Fallback de Animações (GSAP)</span>
+              <span class="test-item-desc">Simula ausência de GSAP, operando via scroll nativo CSS/JS.</span>
+            </div>
+            <button id="testToggleGsapFallback" class="test-switch-btn" data-active="false">
+              <span>TESTAR NATIVO</span>
+            </button>
+          </div>
+
+          <!-- Teste 3: GitHub API Fallback -->
+          <div class="fallback-test-item">
+            <div class="test-item-meta">
+              <span class="test-item-title">9.4 — Fallback da API do GitHub</span>
+              <span class="test-item-desc">Simula erro ou offline na API pública, ativando cache estático.</span>
+            </div>
+            <button id="testToggleApiFallback" class="test-switch-btn" data-active="false">
+              <span>TESTAR OFFLINE</span>
+            </button>
+          </div>
+
+          <!-- Teste 4: Imagens dos Projetos Fallback -->
+          <div class="fallback-test-item">
+            <div class="test-item-meta">
+              <span class="test-item-title">9.3 — Fallback de Imagens dos Projetos</span>
+              <span class="test-item-desc">Oculta capturas e exibe interface alternativa estilizada com dados reais.</span>
+            </div>
+            <button id="testToggleImgFallback" class="test-switch-btn" data-active="false">
+              <span>TESTAR FALLBACK</span>
+            </button>
+          </div>
+
+          <!-- Teste 5: Prefers-reduced-motion -->
+          <div class="fallback-test-item">
+            <div class="test-item-meta">
+              <span class="test-item-title">9.5 — Movimento Reduzido</span>
+              <span class="test-item-desc">Desativa rotações acentuadas para máxima acessibilidade.</span>
+            </div>
+            <button id="testToggleReducedMotion" class="test-switch-btn" data-active="false">
+              <span>REDUZIR MOVIMENTO</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="resetAllFallbacksBtn" class="reset-fallbacks-btn">RESTAURAR MODO PADRÃO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE NOTIFICAÇÃO (COPIADO, MODOS, ETC.) -->
+  <div id="siteToast" class="site-toast" role="status" aria-live="polite"></div>
+
+  <!-- CARREGAMENTO DE BIBLIOTECAS LOCAIS COM FALLBACK AUTOMÁTICO PARA CDNS -->
+  <!-- 1. Three.js -->
+  <script src="libs/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- 2. CSS3DRenderer -->
+  <script src="libs/CSS3DRenderer.js"></script>
+  <script>
+    if (typeof THREE !== 'undefined' && typeof THREE.CSS3DRenderer === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/renderers/CSS3DRenderer.js"><\/script>');
+    }
+  </script>
+
+  <!-- 3. GSAP -->
+  <script src="libs/gsap.min.js"></script>
+  <script>
+    if (typeof gsap === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- 4. ScrollTrigger -->
+  <script src="libs/ScrollTrigger.min.js"></script>
+  <script>
+    if (typeof ScrollTrigger === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- SCRIPT PRINCIPAL DO PORTFÓLIO -->
+  <script src="script.js"></script>
+</body>
+</html>
+
